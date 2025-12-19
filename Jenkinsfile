@@ -12,6 +12,8 @@ pipeline {
         }
 
         stage('build') {
+            displayName 'super Build!'
+            description 'Build the project'
             steps {
                 sh 'yarn build'
             }
@@ -22,7 +24,9 @@ pipeline {
                 sh 'yarn test'
             }
             post {
-                junit 'reports/*.xml'
+                always {
+                    junit 'reports/*.xml'
+                }
             }
         }
 
@@ -31,7 +35,9 @@ pipeline {
                 sh 'yarn test:e2e'
             }
             post {
-                junit 'reports/*.xml'
+                always {
+                    junit 'reports/*.xml'
+                }
             }
         }
 
@@ -59,12 +65,6 @@ pipeline {
                     profileName: 'role-based-access', 
                     userMetadata: []
             }
-        }
-    }
-
-    post {
-        always {
-            junit 'reports/*.xml'
         }
     }
 
