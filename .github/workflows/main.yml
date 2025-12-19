@@ -41,6 +41,6 @@ jobs:
       with:
           report_paths: 'reports/*.xml'
     - name: Create a tag
-      if: ${{ inputs.tag_name }}
+      if: ${{ inputs.tag_name != "" }}
       run: git tag ${{ inputs.tag_name }}
       
