@@ -8,6 +8,10 @@ pipeline {
         stage('install') {
             steps {
                 sh 'yarn'
+                script {
+                    currentBuild.displayName = 'Name of super build'
+                    currentBuild.description = "${params.Version}"
+                }
             }
         }
 
