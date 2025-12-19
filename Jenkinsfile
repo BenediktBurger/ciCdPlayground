@@ -21,11 +21,17 @@ pipeline {
             steps {
                 sh 'yarn test'
             }
+            post {
+                junit 'reports/*.xml'
+            }
         }
 
         stage('integration tests') {
             steps {
                 sh 'yarn test:e2e'
+            }
+            post {
+                junit 'reports/*.xml'
             }
         }
 
