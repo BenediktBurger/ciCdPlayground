@@ -42,5 +42,10 @@ jobs:
           report_paths: 'reports/*.xml'
     - name: Create a tag
       if: ${{ inputs.tag_name != '' }}
-      run: git tag ${{ inputs.tag_name }}
-      
+      run: |
+        git config --global user.name "Your Name"
+        git config --global user.email "your-email@example.com"
+        git tag ${{ inputs.tag_name }}
+        git push --tags
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
