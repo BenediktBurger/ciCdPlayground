@@ -26,7 +26,6 @@ pipeline {
         stage('integration tests') {
             steps {
                 sh 'yarn test:e2e'
-                junit '**/reports/**/*.xml'
             }
         }
 
