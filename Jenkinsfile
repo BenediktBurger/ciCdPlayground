@@ -55,5 +55,11 @@ pipeline {
                     userMetadata: []
             }
         }
+
+        post {
+            always {
+                junit '**/reports/**/*.xml'
+            }
+        }
     }
 }
