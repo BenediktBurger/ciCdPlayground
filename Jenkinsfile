@@ -17,9 +17,22 @@ pipeline {
             }
         }
 
+        stage('unit tests') {
+            steps {
+                sh 'yarn test'
+            }
+        }
+
+        stage('integration tests') {
+            steps {
+                sh 'yarn test:e2e'
+            }
+        }
+
         stage('deploy') {
             steps {
-                s3Upload consoleLogLevel: 'INFO', 
+                s3Upload
+                  consoleLogLevel: 'INFO', 
                   dontSetBuildResultOnFailure: false, 
                   dontWaitForConcurrentBuildCompletion: false, 
                   entries: [[
