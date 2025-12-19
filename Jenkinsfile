@@ -16,8 +16,6 @@ pipeline {
         }
 
         stage('build') {
-            displayName: 'super Build!'
-            description: 'Build the project'
             steps {
                 sh 'yarn build'
             }
