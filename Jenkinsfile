@@ -31,8 +31,7 @@ pipeline {
 
         stage('deploy') {
             steps {
-                s3Upload
-                  consoleLogLevel: 'INFO', 
+                s3Upload consoleLogLevel: 'INFO', 
                   dontSetBuildResultOnFailure: false, 
                   dontWaitForConcurrentBuildCompletion: false, 
                   entries: [[
